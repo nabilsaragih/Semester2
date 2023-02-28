@@ -1,1 +1,0 @@
-suhuCelcius * 4

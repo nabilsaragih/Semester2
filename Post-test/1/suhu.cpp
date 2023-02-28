@@ -95,18 +95,18 @@ void menuUtama() {
 
 int main() {
     int banyakPercobaan = 3;
-    string username, password;
+    string namalengkap, nim;
     int pilihan;
     char ulang;
     float suhu;
 
     while(banyakPercobaan > 0) {
-        cout << "Masukkan username: ";
-        getline(cin, username);
-        cout << "Masukkan password: ";
-        getline(cin, password);
+        cout << "Masukkan nama lengkap: ";
+        getline(cin, namalengkap);
+        cout << "Masukkan NIM: ";
+        getline(cin, nim);
 
-        if (username != "Muhammad Nabil Saragih" && password != "2209106032") {
+        if (namalengkap != "Muhammad Nabil Saragih" && nim != "2209106032") {
             banyakPercobaan -= 1;
             cout << "Username atau password yang anda masukkan salah!\n";
             system("cls");
@@ -166,12 +166,14 @@ int main() {
 
                     cout << "Apakah anda ingin mengkonversi suhu lagi (Y/N)? ";
                     cin >> ulang;
+                    system("cls");
 
             } while (ulang != 'n');
         }
+    break;
     }
 
-    cout << "Anda tidak diperbolehkan masuk!";
+    cout << "Program dihentikan";
 
     return 0;
 }

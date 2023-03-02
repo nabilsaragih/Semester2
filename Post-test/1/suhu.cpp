@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <conio.h>
 using namespace std;
 
 class Celcius {
@@ -95,12 +96,11 @@ void menuUtama() {
 
 int main() {
     int banyakPercobaan = 3;
-    string namalengkap, nim;
+    string namalengkap, nim, suhuTemporer, pilihanTemporer, ulang;
     int pilihan;
-    char ulang;
     float suhu;
 
-    while(banyakPercobaan > 0) {
+    while (banyakPercobaan > 0) {
         cout << "Masukkan nama lengkap: ";
         getline(cin, namalengkap);
         cout << "Masukkan NIM: ";
@@ -111,51 +111,76 @@ int main() {
             cout << "Username atau password yang anda masukkan salah!\n";
             system("cls");
         } else {
-            do {
+            while (true) {
                 system("cls");
                 menuUtama();
-                cin >> pilihan;
+                getline(cin, pilihanTemporer);
+                pilihan = stoi(pilihanTemporer);
                 switch (pilihan) {
                     case 1:
                         system("cls");
-                        cout << "Masukkan suhu: ";
-                        cin >> suhu;
+                        cout << "Masukkan suhu: "; getline(cin, suhuTemporer);
+                        try {
+                        suhu = stof(suhuTemporer);
                         Celcius ubahCelcius;
                         ubahCelcius.setSuhu(suhu);
                         cout << "Suhu dalam Reamur: " << ubahCelcius.getSuhu().suhuReamur << "\n";
                         cout << "Suhu dalam Fahrenheit: " << ubahCelcius.getSuhu().suhuFahrenheit << "\n";
                         cout << "Suhu dalam Kelvin: " << ubahCelcius.getSuhu().suhuKelvin << "\n";
                         break;
+                        } catch (const invalid_argument &e) {
+                            cout << "Angka yang anda masukkan tidak valid, tekan ENTER untuk kembali. ";
+                            getch();
+                            menuUtama();
+                        }
                     case 2:
                         system("cls");
-                        cout << "Masukkan suhu: ";
-                        cin >> suhu;
+                        cout << "Masukkan suhu: "; getline(cin, suhuTemporer);
+                        try {
+                        suhu = stof(suhuTemporer);
                         Reamur ubahReamur;
                         ubahReamur.setSuhu(suhu);
                         cout << "Suhu dalam Reamur: " << ubahReamur.getSuhu().suhuCelcius << "\n";
                         cout << "Suhu dalam Fahrenheit: " << ubahReamur.getSuhu().suhuFahrenheit << "\n";
                         cout << "Suhu dalam Kelvin: " << ubahReamur.getSuhu().suhuKelvin << "\n";
                         break;
+                        } catch (const invalid_argument &e) {
+                            cout << "Angka yang anda masukkan tidak valid, tekan ENTER untuk kembali. ";
+                            getch();
+                            menuUtama();
+                        }
                     case 3:
                         system("cls");
-                        cout << "Masukkan suhu: ";
-                        cin >> suhu;
+                        cout << "Masukkan suhu: "; getline(cin, suhuTemporer);
+                        try {
+                        suhu = stof(suhuTemporer);
                         Fahrenheit ubahFahrenheit;
                         ubahFahrenheit.setSuhu(suhu);
                         cout << "Suhu dalam Fahrenheit: " << ubahFahrenheit.getSuhu().suhuCelcius << "\n";
                         cout << "Suhu dalam Reamur: " << ubahFahrenheit.getSuhu().suhuReamur << "\n";
                         cout << "Suhu dalam Kelvin: " << ubahFahrenheit.getSuhu().suhuKelvin << "\n";
                         break;
+                        } catch (const invalid_argument &e) {
+                            cout << "Angka yang anda masukkan tidak valid, tekan ENTER untuk kembali. ";
+                            getch();
+                            menuUtama();
+                        }
                     case 4:
                         system("cls");
-                        cout << "Masukkan suhu: ";
-                        cin >> suhu;
+                        cout << "Masukkan suhu: "; getline(cin, suhuTemporer);
+                        try {
+                        suhu = stof(suhuTemporer);
                         Kelvin ubahKelvin;
                         ubahKelvin.setSuhu(suhu);
                         cout << "Suhu dalam Kelvin: " << ubahKelvin.getSuhu().suhuCelcius << "\n";
                         cout << "Suhu dalam Reamur: " << ubahKelvin.getSuhu().suhuReamur << "\n";
                         cout << "Suhu dalam Fahrenheit: " << ubahKelvin.getSuhu().suhuFahrenheit << "\n";
                         break;
+                        } catch (const invalid_argument &e) {
+                            cout << "Angka yang anda masukkan tidak valid, tekan ENTER untuk kembali. ";
+                            getch();
+                            menuUtama();
+                        }
                     case 5:
                         system("cls");
                         break;
@@ -165,15 +190,15 @@ int main() {
                     }
 
                     cout << "Apakah anda ingin mengkonversi suhu lagi (Y/N)? ";
-                    cin >> ulang;
-                    system("cls");
+                    getline(cin, ulang);
 
-            } while (ulang != 'n');
+                    if (ulang == "N" || ulang == "n") {
+                        system("cls");
+                        exit(0);
+                    }
+            }
         }
-    break;
     }
-
-    cout << "Program dihentikan";
 
     return 0;
 }

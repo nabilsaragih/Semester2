@@ -3,6 +3,8 @@
 #include <conio.h>
 using namespace std;
 
+
+// class untuk menyimpan suhu dan mengkonversi
 class Celcius {
     private:
         float suhuCelcius;
@@ -95,7 +97,7 @@ void menuUtama() {
 }
 
 int main() {
-    int banyakPercobaan = 3;
+    int banyakPercobaan = 3;    // variabel untuk membantu jalannya program
     string namalengkap, nim, suhuTemporer, pilihanTemporer, ulang;
     int pilihan;
     float suhu;
@@ -128,9 +130,9 @@ int main() {
                         cout << "Suhu dalam Fahrenheit: " << ubahCelcius.getSuhu().suhuFahrenheit << "\n";
                         cout << "Suhu dalam Kelvin: " << ubahCelcius.getSuhu().suhuKelvin << "\n";
                         break;
-                        } catch (const invalid_argument &e) {
+                        } catch (const invalid_argument &e) { // error handling
                             cout << "Angka yang anda masukkan tidak valid, tekan ENTER untuk kembali. ";
-                            getch();
+                            getch(); // untuk kembali
                             menuUtama();
                         }
                     case 2:
